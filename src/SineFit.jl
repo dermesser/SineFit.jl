@@ -15,7 +15,7 @@ end
 
 """
     estimate_wave_parameters(xdata::Vector{T}, ydate::Vector{T};
-        sample_rate=nothing)::Vector{T} where {T<:Number}
+        sample_rate=nothing)::WaveFitParams where {T<:Number}
 
 Use Fourier analysis and statistics to find the best monochromatic sine wave parameters for data.
 `xsym` and `ysym` are the column symbols for the x and y columns within DataFrame `df`, respectively.
@@ -24,7 +24,7 @@ Returns a `WaveFitParams` struct with frequency and phase shift as circular freq
 If `sample_rate` is not specified, the rate is determined automatically from the `xdata` argument.
 """
 function estimate_wave_parameters(xdata::Vector{T}, ydata::Vector{T};
-        sample_rate=nothing) where {T<:Number}
+        sample_rate=nothing)::WaveFitParams where {T<:Number}
     if sample_rate === nothing
         sample_rate = 1 / Statistics.mean(xdata[2:end] - xdata[1:end-1])
     end
@@ -49,7 +49,7 @@ end
 
 """
     calculate_wave_shape(xdata::Vector{T}, ydate::Vector{T};
-        sample_rate=nothing)::Vector{T} where {T<:Number}
+        sample_rate=nothing)::WaveFitParams where {T<:Number}
 
 Fit a sine function (`sin_model`, i.e. `a sin(b x + c) + d`) to the given data `xdata`/`ydata`.
 
@@ -60,7 +60,7 @@ a very limited frequency resolution. This helps a lot with accuracy.
 If `sample_rate` is not specified, the rate is determined automatically from the `xdata` argument.
 """
 function calculate_wave_shape(xdata::Vector{T}, ydata::Vector{T};
-        sample_rate=nothing) where {T<:Number}
+        sample_rate=nothing)::WaveFitParams where {T<:Number}
 
     estimate = estimate_wave_parameters(xdata, ydata, sample_rate=sample_rate)
     initial = [estimate.amplitude, estimate.frequency, estimate.phaseshft, estimate.vertoffst]
