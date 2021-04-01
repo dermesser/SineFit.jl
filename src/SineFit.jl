@@ -55,7 +55,7 @@ Fit a sine function (`sin_model`, i.e. `a sin(b x + c) + d`) to the given data `
 
 This function first estimates the parameters using normal statistics and fourier analysis using `estimate_wave_parameters()`.
 Then, a least-squares fit (`LsqFit`) is used to refine the parameters -- for example, to adjust the frequency, as a FFT has
-a very limited frequency resolution.
+a very limited frequency resolution. This helps a lot with accuracy.
 
 If `sample_rate` is not specified, the rate is determined automatically from the `xdata` argument.
 """
