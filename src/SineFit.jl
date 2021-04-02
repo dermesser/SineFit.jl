@@ -84,7 +84,7 @@ end
 
 
 """
-    sin(x::T, wp::WaveFitParams)::T where {T<:Number}
+    sin(x::Vector{T}, wp::WaveFitParams)::Vector{T} where {T<:Number}
 
 Return sin for `x` with the parameters given in `wp`. Useful in order to plot the fit function, for example.
 
