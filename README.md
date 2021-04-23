@@ -1,5 +1,8 @@
 # SineFit.jl
 
+[![version](https://juliahub.com/docs/SineFit/version.svg)](https://juliahub.com/ui/Packages/SineFit/wHoPL)
+[Documentation](https://juliahub.com/docs/SineFit/)
+
 ![Example plot](example.svg)
 
 This package provides functions for estimating and accurately fitting a sine
