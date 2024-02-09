@@ -3,6 +3,7 @@ module SineFit
 import LsqFit
 import FFTW
 import Statistics
+import Main: sin
 
 export estimate_wave_parameters, calculate_wave_shape, sin
 
@@ -96,7 +97,7 @@ Plots.plot!(xs, sin.(xs, wp))
 
 """
 function sin(xs::Vector{T}, wp::WaveFitParams)::Vector{T} where {T<:Number}
-    wp.amplitude .* Base.sin.(wp.frequency .* xs .+ wp.phaseshft) .+ wp.vertoffst
+    wp.amplitude .* sin.(wp.frequency .* xs .+ wp.phaseshft) .+ wp.vertoffst
 end
 
 end # module
