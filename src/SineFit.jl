@@ -3,7 +3,7 @@ module SineFit
 import LsqFit
 import FFTW
 import Statistics
-import Main: sin
+import Base: sin
 
 export estimate_wave_parameters, calculate_wave_shape, sin
 
